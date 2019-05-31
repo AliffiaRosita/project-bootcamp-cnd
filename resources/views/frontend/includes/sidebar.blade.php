@@ -28,16 +28,19 @@
     <h4 class="text-uppercase pb-20">Recent Posts</h4>
     <div class="active-recent-carusel">
         <div class="item">
+                <a href="{{url('read/'.$top_post[0]->id)}}">
             <img src="{{ asset('images/post/'.$top_post[0]->image_cover) }}" height="200px" width="200px" alt="">
-            <p class="mt-20 title text-uppercase">{{$top_post[0]->title}}</p>
+        <p class="mt-20 title text-uppercase">{{$top_post[0]->title}}</p></a>
         </div>
         <div class="item">
+                <a href="{{url('read/'.$top_post[1]->id)}}">
             <img src="{{ asset('images/post/'.$top_post[1]->image_cover) }}" height="200px" width="200px" alt="">
-            <p class="mt-20 title text-uppercase">{{$top_post[1]->title}}</p>
+            <p class="mt-20 title text-uppercase">{{$top_post[1]->title}}</p></a>
         </div>
         <div class="item">
+                <a href="{{url('read/'.$top_post[2]->id)}}">
             <img src="{{ asset('images/post/'.$top_post[2]->image_cover) }}" height="200px" width="200px" alt="">
-            <p class="mt-20 title text-uppercase">{{$top_post[2]->title}}</p>
+           <p class="mt-20 title text-uppercase">{{$top_post[2]->title}}</p></a>
         </div>
     </div>
 </div>

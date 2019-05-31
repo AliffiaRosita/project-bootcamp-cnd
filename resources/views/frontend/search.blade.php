@@ -50,7 +50,7 @@
                                     <img src="{{ asset('images/post/'.$post->image_cover) }}" height="200px" width="200px" alt="">
                                 </div>
                                 <div class="detail">
-                                    <a href="#">
+                                <a href="{{url('read/'.$post->id)}}">
                                     <h4 class="pb-20">{{$post->title}}</h4>
                                     </a>
                                     <p>

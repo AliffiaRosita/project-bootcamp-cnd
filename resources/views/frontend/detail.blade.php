@@ -1,6 +1,6 @@
 @extends('frontend.includes.template')
 
-@section('title') Detail xxx @endsection
+@section('title') {{$post->title}} @endsection
 
 @section('content')
 

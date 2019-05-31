@@ -5,12 +5,12 @@
 @section('content')
 
     <!-- Start top-section Area -->
-    <section class="top-section-area section-gap">
+<section class="top-section-area section-gap" style="background-image:url({{asset('images/categories/'.$categories_now->cover_image)}}); background-repeat:no-repeat;background-size: cover;position: relative;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);">
         <div class="container">
             <div class="row justify-content-between align-items-center d-flex">
                 <div class="col-lg-8 top-left">
                     <h1 class="text-white mb-20">{{$categories_now->name}}</h1>
-                    <ul style="color:white">
+                    <ul class="text-white" style="text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);" >
                         <li>Home<span class="lnr lnr-arrow-right"></span></li>
                         <li>Category<span class="lnr lnr-arrow-right"></span></li>
                         <li>{{$categories_now->name}}</li>
