@@ -44,6 +44,7 @@
                                 <a href="{{url('read/'.$item->post_id)}}">
                                         <h4 class="pb-20">{{$item->post->title}}</h4>
                                     </a>
+
                                     <p>
                                         {{str_limit( strip_tags($item->post->content), 100)}}
                                     </p>

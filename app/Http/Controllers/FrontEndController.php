@@ -32,18 +32,19 @@ class FrontEndController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function category(Request $request,$id)
+    public function category($id)
     {
         $top_post = Post::orderBy('created_at','desc')->get();
-        $post_join = PostCategory::where('category_id',$id)->get();
         $categories = Category::all();
-        if($request->title == null){
-            $post = Post::orderBy('created_at','desc');
-        }else{
+            $post_join = PostCategory::where('category_id',$id)->get();
 
-            $post = Post::where('title','LIKE',"%$request->title%")->orderBy('created_at','desc')->get();
 
-        }
+        // }else{
+        //     $key = $request->title;
+
+        //     $post_join = \DB::table('post_categories')->join('posts','post_id','=','posts.id')->join('categories','category_id','=','categories.id')->select('posts.title','categories.name')->where('category_id',$id)->where('posts.title','like',"%$key%")->get();
+
+        // }
 
         $categories_now= Category::where('id',$id)->first();
 
@@ -62,8 +63,7 @@ class FrontEndController extends Controller
         if ($request->title == null) {
            $posts = Post::orderBy('created_at','desc')->get();
         }else{
-            $posts = Post::where('title','LIKE',"%$request->title%")->orderBy('created_at','desc')->get();
-
+             $posts = Post::where('title','LIKE',"%$request->title%")->orderBy('created_at','desc')->get();
         }
         return view('frontend.search',compact('categories','posts','top_post'));
     }
