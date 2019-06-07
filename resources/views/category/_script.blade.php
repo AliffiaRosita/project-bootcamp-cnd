@@ -15,7 +15,10 @@
             $.ajax({
                 type: "POST",
                 url: url,
-                data: form.serialize(), // serializes the form's elements.
+                data: new FormData($(this)[0]),
+                dataType: 'JSON',
+                contentType: false,
+                processData: false,
                 success: function(res) {
                     // sembunyikan modal
                     $('#modal-form').modal('hide');
@@ -36,21 +39,23 @@
                     let errorText = '';
                     $.each(xhr.responseJSON.errors, function(key, value) {
                         errorText += value + ' / ';
-                    }); 
+                    });
 
                     swal("Gagal!", errorText, "warning");
                 }
             });
-        }); 
+        });
 
         // aksi saat button add di klik
         $('.add-data').on('click', function(e) {
             // ubah judulnya
             $('.modal-title').text('Tambah Data');
-            
+
             // reset inputan
             $('#name').val('');
             $('#description').val('');
+            $('#pict').val('');
+            $('#picture').attr('src','https://via.placeholder.com/300x150');
 
             // set add url dan disable method put
             $('#form-add').attr('action', targetUrl);
@@ -62,35 +67,52 @@
         // aksi saat button edit saat di klik
         $('.edit-data').on('click', function(e) {
             // tampilkan modal dan ubah judulnya
+            e.preventDefault();
             $('#modal-form').modal('show');
             $('.modal-title').text('Ubah Data');
-            
-            // ambil parent dari button (this)
-            // $parentRow = $(this).parent().parent();
-            $parentRow = $(this).closest('tr');
-            $('#name').val(
-                $parentRow.find('td').eq(1).text()
-            );
-            $('#description').val(
-                $parentRow.find('td').eq(2).text()                
-            );
+
+            var id = $(this).attr('data-id');
+            var urlEdit = targetUrl+'/'+id+'/edit';
+
+            $.ajax({
+                type: "GET",
+                url: urlEdit,
+                dataType: 'JSON',
+                success: function(res) {
+                    // sembunyikan modal
+                    $('#name').val(res.name);
+                    $('#description').val(res.description);
+                    $('#picture').attr('src','/images/categories/'+res.images);
+
+                },
+                error: function(xhr) {
+                    let errorText = '';
+                    $.each(xhr.responseJSON.errors, function(key, value) {
+                        errorText += value + ' / ';
+                    });
+
+                    swal("Gagal!", errorText, "warning");
+                }
+            });
+
 
             // set update url
-            $('#form-add').attr('action', 
-                targetUrl +'/'+ $parentRow.attr('data-id')
+            $('#form-add').attr('action',
+                targetUrl +'/'+ id
             );
+
             $('input[name="_method"]').prop('disabled', false);
 
-            e.preventDefault();
+
         });
 
         // aksi saat button delete di klik
         $('.delete-data').on('click', function(e) {
             // set delete url
-            $('#form-delete').attr('action', 
+            $('#form-delete').attr('action',
                 $(this).attr('href')
             );
-            
+
             // confirm dialog
             swal({
                 title: "Peringatan!",
@@ -125,7 +147,7 @@
         $cloneRow.find('td').eq(2).text(
             $('#description').val()
         );
-        
+
         // tambahkan baris yg di clone setelah baris terakhir
         $lastRow.after( $cloneRow );
     }
@@ -144,6 +166,6 @@
 
     function removeRow(id) {
         const $findRow = $('table tbody tr[data-id="'+ id +'"]');
-        $findRow.remove();        
+        $findRow.remove();
     }
 </script>

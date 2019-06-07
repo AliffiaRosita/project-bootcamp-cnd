@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    // menyatakan field-field yang akan di input 
+    // menyatakan field-field yang akan di input
     // ke suatu tabel
     protected $fillable = [
         'author_id',

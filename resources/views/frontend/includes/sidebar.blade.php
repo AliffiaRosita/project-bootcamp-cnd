@@ -1,6 +1,6 @@
-<div class="single_widget search_widget">
+{{-- <div class="single_widget search_widget">
     <div id="imaginary_container">
-    {{-- <form action="{{url('category/'.$categories_now->id)}}"> --}}
+    <form action="{{url('category/'.$categories_now->id)}}">
         <div class="input-group stylish-input-group">
             <input type="text" name="title" class="form-control" placeholder="Search">
             <span class="input-group-addon">
@@ -9,9 +9,9 @@
                 </button>
             </span>
         </div>
-    {{-- </form> --}}
+    </form>
     </div>
-</div>
+</div> --}}
 
 <div class="single_widget cat_widget">
     <h4 class="text-uppercase pb-20">post categories</h4>

@@ -32,6 +32,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::put('/posts/{id}', 'PostController@update');
     Route::delete('/posts/{id}', 'PostController@destroy');
 
+    Route::resource('user', 'UserController');
+
     // ------------------------------------------------------------
     // Categories
     // ------------------------------------------------------------

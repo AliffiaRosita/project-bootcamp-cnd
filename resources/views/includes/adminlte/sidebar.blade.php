@@ -38,6 +38,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ url('/admin/user') }}" class="nav-link {{ Request::segment(2) == 'user' ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-info"></i>
+                        <p>User</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ url('/admin/posts') }}" class="nav-link {{ Request::segment(2) == 'posts' ? 'active' : '' }}">
                         <i class="nav-icon fa fa-rss"></i>
                         <p>Posts</p>

@@ -3,7 +3,7 @@
 @section('title') Halaman Test @endsection
 
 @section('content')
-    
+
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Data Test</h3>

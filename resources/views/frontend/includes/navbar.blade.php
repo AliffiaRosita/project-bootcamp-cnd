@@ -27,6 +27,11 @@
                               @endforeach
                             </div>
                         </li>
+                        <li>
+                            <a href="{{ url('/login') }}">
+                                <i class="fa fa-sign-in"></i> login
+                            </a>
+                        </li>
                 </div>
         </div>
     </nav>

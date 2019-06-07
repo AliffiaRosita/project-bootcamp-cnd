@@ -18,8 +18,8 @@ class CreatePostCategoriesTable extends Migration
             $table->unsignedBigInteger('post_id');
             $table->unsignedBigInteger('category_id');
 
-            $table->foreign('post_id')->references('id')->on('posts');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

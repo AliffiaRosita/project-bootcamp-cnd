@@ -3,7 +3,7 @@
 @section('title') Halaman Kategori Postingan @endsection
 
 @section('content')
-    
+
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Data Kategori Postingan</h3>
@@ -38,7 +38,7 @@
                         <td>{{ $category->name }}</td>
                         <td>{{ $category->description }}</td>
                         <td>
-                            <a href="{{ url('admin/categories/' . $category->id . '/edit') }}" class="btn btn-sm btn-primary edit-data">
+                            <a href="{{ url('admin/categories/' . $category->id . '/edit') }}" data-id="{{ $category->id }}" class="btn btn-sm btn-primary edit-data">
                                 <i class="fa fa-edit"></i>
                             </a>
                             <a href="{{ url('admin/categories/' . $category->id) }}" class="btn btn-sm btn-danger delete-data">

@@ -3,7 +3,7 @@
 @section('title') Halaman Post @endsection
 
 @section('content')
-    
+
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Data Postingan</h3>

@@ -44,45 +44,37 @@
                 {{-- end area --}}
 
                 <div class="form-group">
-                    <label for="title">Judul</label>
-                <input type="text" class="form-control" name="title" id="title" placeholder="Judul Postingan" value="{{ old('title') }}">
+                    <label for="name">Nama Lengkap <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Nama Kategori..." required>
                 </div>
                 <div class="form-group">
-                    <label for="content">Konten</label>
-                    <textarea name="content" id="content">{{ old('content') }}</textarea>
-                </div>
-                <div class="form-group">
-                    <label for="categories">Kategori</label>
-                    <select class="form-control" name="categories[]" id="categories" multiple required>
-                        @foreach ($categories as $category)
-                            @if (old("categories"))
-                                @if ( in_array($category->id, old("categories")) )
-                                    @php $selected = 'selected' @endphp
-                                @endif
-                            @endif
-
-                            <option value="{{ $category->id }}" {{ $selected ?? '' }}>{{ $category->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="users">Penulis</label>
-                    <select class="form-control" name="author_id" id="users" required>
-                        @foreach ($users as $user)
-                            <option value="{{ $user->id }}" {{ old('author_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="status_draft">Status</label>
+                    <label for="status_draft">Jenis Kelamin</label>
                     <div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="is_draft" id="status_draft" value="1" {{ old('is_draft') == '1' ? 'checked' : '' }}>
-                            <label class="form-check-label" for="status_draft">Draft</label>
+                            <input class="form-check-input" type="radio" name="jenis_kelamin" id="perempuan" value="perempuan" {{ old('jenis_kelamin') == 'perempuan' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="perempuan">Perempuan</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="is_draft" id="status_publish" value="0" {{ old('is_draft') == '0' ? 'checked' : '' }}>
-                            <label class="form-check-label" for="status_publish">Publish</label>
+                            <input class="form-check-input" type="radio" name="jenis_kelamin" id="pria" value="pria" {{ old('jenis_kelamin') == 'pria' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="pria">Pria</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="alamat">Alamat </label>
+                    <textarea class="form-control" name="alamat" id="alamat" placeholder="Alamat.."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="status_draft">Role</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="role" id="pengguna" value="pengguna" {{ old('role') == 'pengguna' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="pengguna">Pengguna</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="role" id="admin" value="admin" {{ old('role') == 'admin' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="admin">Admin</label>
                         </div>
                     </div>
                 </div>
@@ -97,26 +89,6 @@
     </div>
 
 @endsection
-
-@push('css')
-    {{-- select2 css --}}
-    <link rel="stylesheet" href="{{ asset('plugins/select2/select2.min.css') }}">
-
-    {{-- summernote css --}}
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
-
-    <style>
-        .select2-container--default .select2-selection--multiple .select2-selection__choice {
-            background-color: #0062cc;
-            border-color: #005cbf;
-            color: #fff;
-        }
-
-        .select2-container .select2-selection--single {
-            height: 34px;
-        }
-    </style>
-@endpush
 
 @push('js')
     {{-- select2 js --}}
@@ -156,3 +128,9 @@
         }
     </script>
 @endpush
+
+
+
+
+
+

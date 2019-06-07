@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name', 100);
             $table->text('description');
+            $table->string('cover_image')->nullable();
             $table->timestamps();
         });
     }
